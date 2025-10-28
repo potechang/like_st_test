@@ -12,6 +12,40 @@
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+    <style>
+    .comment-tooltip {
+      position: relative;
+      cursor: pointer;
+      color: #007bff;
+    }
+
+    .comment-tooltip::after {
+      content: attr(data-comment);
+      position: absolute;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(60, 60, 60, 0.9);
+      color: #fff;
+      padding: 6px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      line-height: 1.4;
+      white-space: pre-wrap;
+      min-width: 100px;
+      max-width: 240px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease-in-out;
+      z-index: 1000;
+    }
+
+    .comment-tooltip:hover::after {
+      opacity: 1;
+      visibility: visible;
+    }
+  </style>
     </script>
 </head>
 
@@ -103,12 +137,15 @@
                         .md5 + "' target='_blank'>" + "view" + "</a></td>").appendTo(str);
 
                     //コメント
-                    $("<td width='15%'>" +
-                      "<span title='" + info[i].comment + "'>コメント</span>" +
-                          "</td>").appendTo(str);
-                            str.appendTo(obj);
-                                count++;
-
+                    if (info[i].comment && info[i].comment.trim() !== "") {
+                      $("<td width='15%'>" +
+                        "<span class='comment-tooltip' data-comment='" + info[i].comment.replace(/"/g, '&quot;') + "'>コメント</span>" +
+                            "</td>").appendTo(str);
+                                } else {
+                                  $("<td width='15%'></td>").appendTo(str);
+                                    }
+                                    str.appendTo(obj);
+                                        count++;
 
                 }
                 $("</tbody>").appendTo(obj);
