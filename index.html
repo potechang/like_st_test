@@ -74,14 +74,14 @@
                     var str = $("<tr></tr>");
 
                     // Level
-                    $("<td width='8%'>" + mark + x + "</td>").appendTo(str);
+                    $("<td width='5%'>" + mark + x + "</td>").appendTo(str);
 
                     // Title
-                    $("<td width='25%'>" +
+                    $("<td width='35%'>" +
                         "<a href='http://www.dream-pro.info/~lavalse/LR2IR/search.cgi?mode=ranking&bmsmd5=" + info[i].md5 + "' target='_blank'>" + info[i].title + "</a></td>").appendTo(str);
 
                     // Artist
-                    $("<td width='20%'>" + info[i].artist + "</td>").appendTo(str);
+                    $("<td width='30%'>" + info[i].artist + "</td>").appendTo(str);
 
                   
                     // 本体DL
@@ -101,11 +101,13 @@
                         "<a href='https://bms-score-viewer.pages.dev/view?md5=" + info[
                             i]
                         .md5 + "' target='_blank'>" + "view" + "</a></td>").appendTo(str);
-                    
-                    // Comment
-                    $("<td width='32%'>" + info[i].comment + "</td>").appendTo(str);
-                    str.appendTo(obj);
-                    count++;
+
+                    //コメント
+                    $("<td width='15%'>" +
+                      "<span title='" + info[i].comment + "'>コメント</span>" +
+                          "</td>").appendTo(str);
+                            str.appendTo(obj);
+                                count++;
 
 
                 }
