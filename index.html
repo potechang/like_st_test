@@ -16,40 +16,59 @@
 
     <!-- コメントツールチップ用CSS -->
     <style>
-        .comment-tooltip {
-            position: relative;
-            cursor: pointer;
-            color: #007bff;
-        }
-        
-        .comment-tooltip::after {
-            content: attr(data-comment);
-            position: absolute;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(60, 60, 60, 0.9);
-            color: #fff;
-            padding: 8px 10px;
-            border-radius: 6px;
-            font-size: 13px;
-            line-height: 1.5;
-            white-space: normal;          /* ← 折り返しを自然に */
-            min-width: 200px;             /* ← 最小幅を広げる */
-            max-width: 500px;             /* ← 最大幅を大きくする */
-            text-align: left;             /* ← 長文でも見やすく */
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.2s ease-in-out;
-            z-index: 1000;
-        }
+.comment-tooltip {
+    position: relative;
+    cursor: pointer;
+    color: #007bff;
+    font-weight: 500;
+}
 
-        .comment-tooltip:hover::after {
-            opacity: 1;
-            visibility: visible;
-        }
+/* 吹き出し本体 */
+.comment-tooltip::after {
+    content: attr(data-comment);
+    position: absolute;
+    bottom: 140%;                /* 吹き出しを少し上に */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(50, 50, 50, 0.95);
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 15px;
+    line-height: 1.6;
+    white-space: normal;
+    min-width: 240px;
+    max-width: 550px;
+    text-align: left;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 1000;
+}
 
+/* 下に出る三角形（矢印） */
+.comment-tooltip::before {
+    content: "";
+    position: absolute;
+    bottom: 130%;                /* 吹き出しの真下に配置 */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 8px;           /* 三角形サイズ */
+    border-style: solid;
+    border-color: rgba(50, 50, 50, 0.95) transparent transparent transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 999;
+}
+
+/* ホバー時に両方を表示 */
+.comment-tooltip:hover::after,
+.comment-tooltip:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
     </style>
 </head>
 
