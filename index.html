@@ -21,7 +21,7 @@
             cursor: pointer;
             color: #007bff;
         }
-
+        
         .comment-tooltip::after {
             content: attr(data-comment);
             position: absolute;
@@ -30,14 +30,15 @@
             transform: translateX(-50%);
             background: rgba(60, 60, 60, 0.9);
             color: #fff;
-            padding: 6px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            line-height: 1.4;
-            white-space: pre-wrap;
-            min-width: 100px;
-            max-width: 240px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            padding: 8px 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            line-height: 1.5;
+            white-space: normal;          /* ← 折り返しを自然に */
+            min-width: 200px;             /* ← 最小幅を広げる */
+            max-width: 500px;             /* ← 最大幅を大きくする */
+            text-align: left;             /* ← 長文でも見やすく */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.2s ease-in-out;
@@ -48,6 +49,7 @@
             opacity: 1;
             visibility: visible;
         }
+
     </style>
 </head>
 
