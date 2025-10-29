@@ -7,6 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="bmstable" content="header.json" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
@@ -16,58 +20,56 @@
 
     <!-- コメントツールチップ用CSS -->
     <style>
-.comment-tooltip {
-    position: relative;
-    cursor: pointer;
-    color: #007bff;
-    font-weight: 500;
+/* 吹き出しアイコン（コメント表示部分） */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  color: #444;
+  font-size: 22px; /* アイコンサイズ */
+  transition: color 0.2s ease;
 }
 
-/* 吹き出し本体 */
-.comment-tooltip::after {
-    content: attr(data-comment);
-    position: absolute;
-    bottom: 140%;                /* 吹き出しを少し上に */
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(50, 50, 50, 0.95);
-    color: #fff;
-    padding: 10px 14px;
-    border-radius: 8px;
-    font-size: 15px;
-    line-height: 1.6;
-    white-space: normal;
-    min-width: 240px;
-    max-width: 550px;
-    text-align: left;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease-in-out;
-    z-index: 1000;
+.tooltip:hover {
+  color: #0078ff; /* ホバー時に少し色が変わる */
 }
 
-/* 下に出る三角形（矢印） */
-.comment-tooltip::before {
-    content: "";
-    position: absolute;
-    bottom: 130%;                /* 吹き出しの真下に配置 */
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 8px;           /* 三角形サイズ */
-    border-style: solid;
-    border-color: rgba(50, 50, 50, 0.95) transparent transparent transparent;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease-in-out;
-    z-index: 999;
+/* ツールチップ本体 */
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: max-content;
+  max-width: 420px; /* 横長に広がる */
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  padding: 12px 16px;
+  border-radius: 10px;
+  position: absolute;
+  z-index: 10;
+  bottom: 130%; /* 上に出る */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  line-height: 1.4;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  white-space: normal;
 }
 
-/* ホバー時に両方を表示 */
-.comment-tooltip:hover::after,
-.comment-tooltip:hover::before {
-    opacity: 1;
-    visibility: visible;
+/* ツールチップの矢印 */
+.tooltip .tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -7px;
+  border-width: 7px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+/* ホバー時に表示 */
+.tooltip:hover .tooltip-text {
+  visibility: visible;
 }
     </style>
 </head>
