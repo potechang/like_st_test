@@ -111,7 +111,7 @@
                 var obj = $("#table_int");
 
                 obj.html("");
-                $("<thead class='table-dark'><tr><th>Level</th><th>Title</th><th>Artist</th><th>本体</th><th>差分</th><th>view</th><th>Comment</th></tr></thead><tbody>")
+                $("<thead class='table-dark'><tr><th>Level</th><th>Title</th><th>Artist</th><th>本体</th><th>差分</th><th>view</th><th>Com</th></tr></thead><tbody>")
                     .appendTo(obj);
                 var obj_sep = null;
                 for (var i = 0; i < info.length; i++) {
@@ -153,18 +153,18 @@
                     ).appendTo(str);
 
                      // View
-                    $("<td width='5%'>" +
+                    $("<td width='7%'>" +
                         "<a href='https://bms-score-viewer.pages.dev/view?md5=" + info[
                             i]
                         .md5 + "' target='_blank'>" + "view" + "</a></td>").appendTo(str);
 
                     //コメント
                      if (info[i].comment && info[i].comment.trim() !== "") {
-                      $("<td width='5%'>")
+                      $("<td width='3%'>")
                         .html("<div class='comment-tooltip' data-comment='" + info[i].comment + "'>💬</div>")
                         .appendTo(str);
                     } else {
-                      $("<td width='5%'></td>").appendTo(str);
+                      $("<td width='3%'></td>").appendTo(str);
                     }
                                     str.appendTo(obj);
                                         count++;
