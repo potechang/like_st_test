@@ -2,71 +2,63 @@
 <html lang="ja">
 
 <head>
-    <title>BMS現代発狂譜面寄せ集め</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="bmstable" content="header.json" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-      integrity="sha512-aZ1nWmWzR0WUvRfsB7bFzYQ5cIl1bMfOgSE1q5M5PjvItCHVYhImsZxOcW7QkwoD6b4UszGlB2wS5EMK1o1L8g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
-    </script>
+  <title>BMS現代発狂譜面寄せ集め</title>
+  <meta charset="UTF-8">
+  <meta name="bmstable" content="header.json" />
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    crossorigin="anonymous"
+  />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- コメントツールチップ用CSS -->
-    <style>
-/* 吹き出しアイコン（コメント表示部分） */
-.tooltip {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-}
-.tooltip i {
-  color: #444 !important;
-  font-size: 22px;
-}
-.tooltip:hover i {
-  color: #0078ff !important;
-}
-.tooltip .tooltip-text {
-  visibility: hidden;
-  width: max-content;
-  max-width: 420px;
-  background-color: #333;
-  color: #fff;
-  padding: 12px 16px;
-  border-radius: 10px;
-  position: absolute;
-  z-index: 10;
-  bottom: 130%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 16px;
-  line-height: 1.4;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-}
-.tooltip .tooltip-text::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -7px;
-  border-width: 7px;
-  border-style: solid;
-  border-color: #333 transparent transparent transparent;
-}
-.tooltip:hover .tooltip-text {
-  visibility: visible;
-}
-    </style>
+  <style>
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  .tooltip i {
+    color: #333 !important;
+    font-size: 22px;
+  }
+  .tooltip:hover i {
+    color: #0078ff !important;
+  }
+  .tooltip .tooltip-text {
+    visibility: hidden;
+    width: max-content;
+    max-width: 420px;
+    background-color: #333;
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 10;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    line-height: 1.4;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  }
+  .tooltip .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -7px;
+    border-width: 7px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+  }
+  .tooltip:hover .tooltip-text {
+    visibility: visible;
+  }
+  </style>
 </head>
 
 <body>
