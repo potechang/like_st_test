@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -8,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="bmstable" content="header.json" />
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
@@ -17,17 +17,54 @@
 
     <!-- コメントツールチップ用CSS -->
     <style>
-.tooltip {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  font-size: 20px;
-  color: #0078d7; /* 鮮やかな青系で視認性UP */
-  transition: color 0.2s ease;
+/* 吹き出しアイコン */
+.comment-tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 22px;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.9); /* 白背景でも見えるように半透明の背景 */
+    border-radius: 50%;
+    padding: 4px 6px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+    transition: all 0.2s ease-in-out;
 }
 
-.tooltip:hover {
-  color: #004c91;
+/* ホバー時に少し反転して目立つ */
+.comment-tooltip:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* ツールチップ本体 */
+.comment-tooltip::after {
+    content: attr(data-comment);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(60, 60, 60, 0.95);
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 15px;
+    line-height: 1.6;
+    white-space: normal;
+    min-width: 200px;
+    max-width: 500px; /* ← 横長に展開されやすく */
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease-in-out;
+    z-index: 1000;
+}
+
+/* 吹き出しが出るときのアニメーション */
+.comment-tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
 }
     </style>
 </head>
@@ -120,14 +157,12 @@
                         .md5 + "' target='_blank'>" + "view" + "</a></td>").appendTo(str);
 
                     //コメント
-                    for (var i = 0; i < info.length; i++) {
-                      $("<td width='5%'>").append(
-                        info[i].comment
-                          ? "<div class='tooltip'><i class='fa-regular fa-comment-dots'></i><span class='tooltip-text'>" +
-                            info[i].comment +
-                            "</span></div>"
-                          : ""
-                      ).appendTo(str);
+                    if (info[i].comment && info[i].comment.trim() !== "") {
+                      $("<td width='15%'>")
+                        .html("<div class='comment-tooltip' data-comment='" + info[i].comment + "'>💬</div>")
+                        .appendTo(str);
+                    } else {
+                      $("<td width='15%'></td>").appendTo(str); // コメントなしの場合は空欄
                     }
                                     str.appendTo(obj);
                                         count++;
