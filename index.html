@@ -134,11 +134,11 @@
                     $("<td width='5%'>" + mark + x + "</td>").appendTo(str);
 
                     // Title
-                    $("<td width='35%'>" +
+                    $("<td width='40%'>" +
                         "<a href='http://www.dream-pro.info/~lavalse/LR2IR/search.cgi?mode=ranking&bmsmd5=" + info[i].md5 + "' target='_blank'>" + info[i].title + "</a></td>").appendTo(str);
 
                     // Artist
-                    $("<td width='30%'>" + info[i].artist + "</td>").appendTo(str);
+                    $("<td width='35%'>" + info[i].artist + "</td>").appendTo(str);
 
                   
                     // 本体DL
@@ -161,11 +161,11 @@
 
                     //コメント
                      if (info[i].comment && info[i].comment.trim() !== "") {
-                      $("<td width='15%'>")
+                      $("<td width='5%'>")
                         .html("<div class='comment-tooltip' data-comment='" + info[i].comment + "'>💬</div>")
                         .appendTo(str);
                     } else {
-                      $("<td width='15%'></td>").appendTo(str);
+                      $("<td width='5%'></td>").appendTo(str);
                     }
                                     str.appendTo(obj);
                                         count++;
