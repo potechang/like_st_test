@@ -160,16 +160,16 @@
                         .md5 + "' target='_blank'>" + "view" + "</a></td>").appendTo(str);
 
                     //コメント
-                    if (info[i].comment && info[i].comment.trim() !== "") {
-                      $("<td width='15%'>" +
-                        "<span class='comment-tooltip' data-comment='" + info[i].comment.replace(/"/g, '&quot;') + "'>コメント</span>" +
-                            "</td>").appendTo(str);
-                                } else {
-                                  $("<td width='15%'></td>").appendTo(str);
-                                    }
-                                    str.appendTo(obj);
-                                        count++;
-
+                    // info[i].comment が空でない場合のみアイコンを表示
+                    for (var i = 0; i < info.length; i++) {
+                      $("<td width='5%'>").append(
+                        info[i].comment
+                          ? "<div class='tooltip'><i class='fa-solid fa-comment-dots'></i><span class='tooltip-text'>" +
+                            info[i].comment +
+                            "</span></div>"
+                          : ""
+                      ).appendTo(str);
+                    }
                 }
                 $("</tbody>").appendTo(obj);
 
