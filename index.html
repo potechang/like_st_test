@@ -17,55 +17,57 @@
 
     <!-- コメントツールチップ用CSS -->
     <style>
-/* 吹き出しアイコン */
-.comment-tooltip {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    font-size: 22px;
-    color: #333;
-    background-color: rgba(255, 255, 255, 0.9); /* 白背景でも見えるように半透明の背景 */
-    border-radius: 50%;
-    padding: 4px 6px;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
-    transition: all 0.2s ease-in-out;
-}
-
-/* ホバー時に少し反転して目立つ */
-.comment-tooltip:hover {
-    background-color: #333;
-    color: #fff;
-}
-
-/* ツールチップ本体 */
-.comment-tooltip::after {
-    content: attr(data-comment);
-    position: absolute;
-    bottom: 125%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(60, 60, 60, 0.95);
-    color: #fff;
-    padding: 10px 14px;
-    border-radius: 8px;
-    font-size: 15px;
-    line-height: 1.6;
-    white-space: normal;
-    min-width: 200px;
-    max-width: 500px; /* ← 横長に展開されやすく */
-    text-align: left;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.25s ease-in-out;
-    z-index: 1000;
-}
-
-/* 吹き出しが出るときのアニメーション */
-.comment-tooltip:hover::after {
-    opacity: 1;
-    visibility: visible;
-}
+        /* 💬 コメントアイコン */
+        .comment-tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            font-size: 22px; /* アイコンサイズ */
+            color: #333;
+            border: 1.5px solid #555; /* 枠線で白背景でも見やすく */
+            border-radius: 50%;
+            padding: 4px 6px;
+            background-color: #fff;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.15); /* 軽い影で浮かせる */
+            transition: all 0.2s ease-in-out;
+        }
+        
+        /* ホバー時に少し強調 */
+        .comment-tooltip:hover {
+            background-color: #333;
+            color: #fff;
+            border-color: #333;
+        }
+        
+        /* ツールチップ（コメント本文） */
+        .comment-tooltip::after {
+            content: attr(data-comment);
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(50, 50, 50, 0.95);
+            color: #fff;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 15px;
+            line-height: 1.6;
+            white-space: normal;
+            min-width: 200px;
+            max-width: 500px;
+            text-align: left;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease-in-out;
+            z-index: 1000;
+        }
+        
+        /* ホバーでツールチップ表示 */
+        .comment-tooltip:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 
@@ -157,12 +159,12 @@
                         .md5 + "' target='_blank'>" + "view" + "</a></td>").appendTo(str);
 
                     //コメント
-                    if (info[i].comment && info[i].comment.trim() !== "") {
+                     if (info[i].comment && info[i].comment.trim() !== "") {
                       $("<td width='15%'>")
                         .html("<div class='comment-tooltip' data-comment='" + info[i].comment + "'>💬</div>")
                         .appendTo(str);
                     } else {
-                      $("<td width='15%'></td>").appendTo(str); // コメントなしの場合は空欄
+                      $("<td width='15%'></td>").appendTo(str);
                     }
                                     str.appendTo(obj);
                                         count++;
