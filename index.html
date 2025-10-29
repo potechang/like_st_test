@@ -22,40 +22,39 @@
         position: relative;
         display: inline-block;
         cursor: pointer;
-        font-size: 16px; /* ← 少し小さくして高さを抑える */
+        font-size: 16px;
         color: #333;
-        border: 1px solid #555; /* 枠線を細く */
+        border: 1px solid #555;
         border-radius: 50%;
-        padding: 2px 4px; /* ← 余白を最小限にして行高を下げる */
+        padding: 2px 4px;
         background-color: #fff;
         box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
-        vertical-align: middle; /* 行内で中央に揃える */
+        vertical-align: middle;
         transition: all 0.2s ease-in-out;
     }
     
-    /* ホバー時に強調 */
     .comment-tooltip:hover {
         background-color: #333;
         color: #fff;
         border-color: #333;
     }
     
-    /* ツールチップ本体 */
+    /* 🗨 ツールチップ（本文） */
     .comment-tooltip::after {
         content: attr(data-comment);
         position: absolute;
-        bottom: 120%; /* 位置をやや近めに調整 */
+        bottom: 120%;
         left: 50%;
         transform: translateX(-50%);
         background: rgba(50, 50, 50, 0.95);
         color: #fff;
-        padding: 8px 12px; /* 枠を少し小さく */
+        padding: 10px 14px;
         border-radius: 6px;
-        font-size: 14px;
-        line-height: 1.5;
+        font-size: 15px;
+        line-height: 1.6;
         white-space: normal;
-        min-width: 180px;
-        max-width: 450px;
+        min-width: 250px;
+        max-width: 650px; /* ← ★ 横に40文字程度入るよう拡大 */
         text-align: left;
         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
         opacity: 0;
@@ -64,7 +63,7 @@
         z-index: 1000;
     }
     
-    /* ホバーでツールチップを表示 */
+    /* ツールチップを表示 */
     .comment-tooltip:hover::after {
         opacity: 1;
         visibility: visible;
